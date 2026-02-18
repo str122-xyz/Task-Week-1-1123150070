@@ -19,4 +19,10 @@ class FruitRush extends FlameGame {
   }
 
   final ValueNotifier<int> scoreNotifier = ValueNotifier<int>(0);
+
+  @override
+  Future<void> onLoad() async {
+    await super.onLoad();
+    //Todo tambahkan basket & buah
+  }
 }
