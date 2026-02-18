@@ -41,4 +41,10 @@ class AudioManager {
   void toggleSfx() {
     _isSfxEnabled = !_isSfxEnabled;
   }
+
+  void playSfx(String fileName) {
+    if (_isSfxEnabled) {
+      FlameAudio.play('sfx/$fileName', volume: _sfxVolume);
+    }
+  }
 }
