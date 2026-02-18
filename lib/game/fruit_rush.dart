@@ -24,8 +24,12 @@ class FruitRush extends FlameGame with PanDetector, HasCollisionDetection {
   }
 
   void resetScore() {
-    _score = 0;
-    scoreNotifier.value = 0;
+    score = 0;
+  }
+
+  void incrementScore() {
+    score = score + 1;
+    AudioManager().playSfx('cash.mp3');
   }
 
   @override
@@ -63,11 +67,6 @@ class FruitRush extends FlameGame with PanDetector, HasCollisionDetection {
       basket.size.x / 2,
       size.x - basket.size.x / 2,
     );
-  }
-
-  void incrementScore() {
-    score++;
-    AudioManager().playSfx('cash.mp3');
   }
 
   void gameOver() {
