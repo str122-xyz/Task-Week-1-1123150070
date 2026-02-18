@@ -3,7 +3,9 @@ import 'package:flame/game.dart';
 import 'game/fruit_rush.dart';
 import 'managers/audio_manager.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AudioManager().initialize();
   runApp(const MyApp());
 }
 
