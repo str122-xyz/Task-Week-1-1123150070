@@ -65,5 +65,17 @@ class Fruit extends PositionComponent
         paint.color = Colors.pink;
         break;
     }
+
+    canvas.drawCircle(Offset(size.x / 2, size.y / 2), size.x / 2, paint);
+
+    final shinePaint = Paint()
+      ..color = Colors.white.withOpacity(0.3)
+      ..style = PaintingStyle.fill;
+
+    canvas.drawCircle(
+      Offset(size.x / 2 - 5, size.y / 2 - 5),
+      size.x / 5,
+      shinePaint,
+    );
   }
 }
