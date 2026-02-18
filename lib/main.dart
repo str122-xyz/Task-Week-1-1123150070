@@ -13,11 +13,47 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class GameScreen extends StatelessWidget {
+class GameScreen extends StatefulWidget {
   const GameScreen({super.key});
 
   @override
+  State<GameScreen> createState() => _GameScreenState();
+}
+
+class _GameScreenState extends State<GameScreen> {
+  final ValueNotifier<int> counter = ValueNotifier(1);
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('Game akan ditampilkan disini')));
+    return Scaffold(
+      body: Stack(
+        children: [
+          Positioned(
+            top: 50,
+            left: 20,
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.black54,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: ValueListenableBuilder<int>(
+                valueListenable: counter,
+                builder: (context, score, child) {
+                  return Text(
+                    'Score: $score',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
