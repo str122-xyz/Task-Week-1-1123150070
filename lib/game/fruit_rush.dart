@@ -1,5 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:fruit_rush/game/components/basket.dart';
 
 class FruitRush extends FlameGame {
   @override
@@ -20,9 +21,12 @@ class FruitRush extends FlameGame {
 
   final ValueNotifier<int> scoreNotifier = ValueNotifier<int>(0);
 
+  late Basket basket;
+
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    //Todo tambahkan basket & buah
+    basket = Basket();
+    await add(basket);
   }
 }
