@@ -14,4 +14,30 @@ class Basket extends PositionComponent with HasGameRef, CollisionCallbacks {
 
     add(RectangleHitbox());
   }
+
+  @override
+  void render(Canvas canvas) {
+    super.render(canvas);
+
+    final paint = Paint()
+      ..color = Color(0xFF8B4513)
+      ..style = PaintingStyle.fill;
+
+    final rect = RRect.fromRectAndRadius(
+      Rect.fromLTWH(0, 0, size.x, size.y),
+      const Radius.circular(10),
+    );
+    canvas.drawRRect(rect, paint);
+
+    final handlePaint = Paint()
+      ..color = Colors.brown[800]!
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 3;
+
+    final handlePath = Path()
+      ..moveTo(10, 0)
+      ..quadraticBezierTo(size.x / 2, -20, size.x - 10, 0);
+
+    canvas.drawPath(handlePath, handlePaint);
+  }
 }
