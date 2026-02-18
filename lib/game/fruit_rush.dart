@@ -68,7 +68,7 @@ class FruitRush extends FlameGame with PanDetector, HasCollisionDetection {
   void gameOver() {
     AudioManager().playSfx('lose2.mp3');
     pauseEngine();
-    // TODO: tampilkan dialog game over
+    overlays.add('GameOver');
   }
 
   @override

@@ -43,7 +43,30 @@ class _GameScreenState extends State<GameScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          GameWidget(game: game),
+          GameWidget(
+            game: game,
+            overlayBuilderMap: {
+              'GameOver': (context, _) {
+                return Center(
+                  child: AlertDialog(
+                    title: const Text('Game Over'),
+                    content: const Text('Buah jatuh, permainan selesai!'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          game.resumeEngine();
+                          game.overlays.remove('GameOver');
+                          game.scoreNotifier.value = 0;
+                        },
+                        child: const Text('Main Lagi'),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            },
+          ),
+
           Positioned(
             top: 50,
             left: 20,
