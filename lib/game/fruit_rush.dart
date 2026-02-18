@@ -24,22 +24,6 @@ class FruitRush extends FlameGame with PanDetector, HasCollisionDetection {
   }
 
   @override
-  void render(Canvas canvas) {
-    final rect = size.toRect();
-
-    final paint = Paint()
-      ..shader = const LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [Color(0xFFB3E5FC), Color(0xFF4FC3F7), Color(0xFF0288D1)],
-      ).createShader(rect);
-
-    canvas.drawRect(rect, paint);
-
-    super.render(canvas);
-  }
-
-  @override
   Future<void> onLoad() async {
     await super.onLoad();
 
@@ -67,7 +51,45 @@ class FruitRush extends FlameGame with PanDetector, HasCollisionDetection {
     add(fruit);
   }
 
+  @override
+  void onPanUpdate(DragUpdateInfo info) {
+    basket.position.x += info.delta.global.x;
+    basket.position.x = basket.position.x.clamp(
+      basket.size.x / 2,
+      size.x - basket.size.x / 2,
+    );
+  }
+
   void incrementScore() {
     score++;
+    AudioManager().playSfx('cash.mp3');
+  }
+
+  void gameOver() {
+    AudioManager().playSfx('lose2.mp3');
+    pauseEngine();
+    // TODO: tampilkan dialog game over
+  }
+
+  @override
+  void onRemove() {
+    AudioManager().stopBackgroundMusic();
+    super.onRemove();
+  }
+
+  @override
+  void render(Canvas canvas) {
+    final rect = size.toRect();
+
+    final paint = Paint()
+      ..shader = const LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [Color(0xFFB3E5FC), Color(0xFF4FC3F7), Color(0xFF0288D1)],
+      ).createShader(rect);
+
+    canvas.drawRect(rect, paint);
+
+    super.render(canvas);
   }
 }
