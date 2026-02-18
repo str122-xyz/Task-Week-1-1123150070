@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'game/fruit_rush.dart';
+import 'managers/audio_manager.dart';
 
 void main() {
   runApp(const MyApp());
