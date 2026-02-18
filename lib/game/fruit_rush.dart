@@ -23,6 +23,11 @@ class FruitRush extends FlameGame with PanDetector, HasCollisionDetection {
     scoreNotifier.value = value;
   }
 
+  void resetScore() {
+    _score = 0;
+    scoreNotifier.value = 0;
+  }
+
   @override
   Future<void> onLoad() async {
     await super.onLoad();

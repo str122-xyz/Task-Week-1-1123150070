@@ -54,9 +54,9 @@ class _GameScreenState extends State<GameScreen> {
                     actions: [
                       TextButton(
                         onPressed: () {
+                          game.resetScore();
                           game.resumeEngine();
                           game.overlays.remove('GameOver');
-                          game.scoreNotifier.value = 0;
                         },
                         child: const Text('Main Lagi'),
                       ),
