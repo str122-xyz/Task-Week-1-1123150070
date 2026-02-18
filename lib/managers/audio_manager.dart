@@ -18,4 +18,14 @@ class AudioManager {
       'sfx/lose2.mp3',
     ]);
   }
+
+  void playBackgroundMusic() {
+    if (_isMusicEnabled) {
+      FlameAudio.bgm.play('music/town.mp3', volume: _musicVolume);
+    }
+  }
+
+  void stopBackgroundMusic() {
+    FlameAudio.bgm.stop();
+  }
 }
