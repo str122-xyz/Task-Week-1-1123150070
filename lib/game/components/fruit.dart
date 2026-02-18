@@ -27,10 +27,10 @@ class Fruit extends PositionComponent
   @override
   void update(double dt) {
     super.update(dt);
-
     position.y += fallSpeed * dt;
 
     if (position.y > gameRef.size.y + 50) {
+      gameRef.gameOver();
       removeFromParent();
     }
   }

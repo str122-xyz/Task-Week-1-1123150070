@@ -112,17 +112,6 @@ class _GameScreenState extends State<GameScreen> {
               ],
             ),
           ),
-
-          Positioned(
-            bottom: 50,
-            left: 20,
-            child: ElevatedButton(
-              onPressed: () {
-                game.scoreNotifier.value++;
-              },
-              child: const Text("Tambah Score"),
-            ),
-          ),
         ],
       ),
     );
