@@ -34,4 +34,14 @@ class Fruit extends PositionComponent
       removeFromParent();
     }
   }
+
+  @override
+  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+    super.onCollision(intersectionPoints, other);
+
+    if (other is Basket) {
+      gameRef.incrementScore();
+      removeFromParent();
+    }
+  }
 }
